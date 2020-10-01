@@ -17,4 +17,16 @@ class Xat{
     {
         return this.xat;
     }
+
+    agafarNous(ultimRebut){
+        let i = 0;
+        let noRebut = [];
+        let tempMsg = "";
+
+        while(this.xat[i] != tempMsg){
+            i++;
+        }
+    }
 }
+
+module.exports = Xat;

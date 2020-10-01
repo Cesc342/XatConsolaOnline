@@ -3,11 +3,14 @@ const router = Express.Router();
 
 const path = require("path");
 
+const _Xat = require("./xat");
+const Xat = new _Xat();
+
 
 router.use(Express.json());
 
 router.use((req, res, next) => {
-    res.writeHead('origin', '*')
+    res.writeHead('Access-Control-Allow-Origin','origin *')
     next();
 })
 
