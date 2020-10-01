@@ -1,0 +1,24 @@
+{
+  "name": "XatConsolaOnline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cesc342/XatConsolaOnline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cesc342/XatConsolaOnline/issues"
+  },
+  "homepage": "https://github.com/Cesc342/XatConsolaOnline#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
