@@ -2,12 +2,15 @@
 class Xat{
     constructor()
     {
-        this.xat = [];
+        this.xat = [{
+            nom:"",
+            msg:""
+        }];
     }
 
     enviar(nom, msg)
     {
-        this.xat.push({
+        this.xat.unshift({
             nom: nom,
             msg: msg
         })
@@ -31,8 +34,13 @@ class Xat{
                 }
             }
 
-            noRebut.push(this.xat[i]);
+            noRebut.unshift(this.xat[i]);
             i++;
+        }
+
+        if(i == 0)
+        {
+            return null;
         }
 
         return noRebut;

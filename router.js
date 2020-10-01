@@ -1,12 +1,13 @@
 const Express = require("express");
 const router = Express.Router();
+const fs = require("fs");
 
 const path = require("path");
 
 const _Xat = require("./xat");
 const Xat = new _Xat();
 
-
+router.use(Express.static( path.join(__dirname, "public") ));
 router.use(Express.json());
 
 router.use((req, res, next) => {
@@ -17,8 +18,8 @@ router.use((req, res, next) => {
 })
 
 router.get("/", (req, res) => {
-    
-    res.json({nom: "Lol", msg:"HEY"});
+    let txt = fs.readFilaAsync("./ConnectarServidor.js");
+    res.send();
 })
 
 router.get("/agafarTot", (req, res) => {
