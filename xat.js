@@ -21,11 +21,21 @@ class Xat{
     agafarNous(ultimRebut){
         let i = 0;
         let noRebut = [];
-        let tempMsg = "";
 
-        while(this.xat[i] != tempMsg){
+        while(i < this.xat.length){
+            let msgXat = this.xat[i];
+
+            if(msgXat.nom == ultimRebut.nom){
+                if(msgXat.msg == ultimRebut.msg){
+                    break;
+                }
+            }
+
+            noRebut.push(this.xat[i]);
             i++;
         }
+
+        return noRebut;
     }
 }
 
