@@ -1,19 +1,41 @@
+const fs = require("fs");
 
-class Xat{
+class Xat extends Map{
     constructor()
     {
+        super();
         this.xat = [{
             nom:"",
             msg:""
         }];
+
+        this.cargar();
     }
 
-    enviar(nom, msg)
+    cargar()
     {
-        this.xat.unshift({
-            nom: nom,
-            msg: msg
-        })
+        let dades = fs.readFileSync("./Contras.json");
+        let json = JSON.parse(dades);
+
+        for(let persona of json){
+            this.set(persona.contrasenya, persona);
+        }
+    }
+
+    enviar(contrasenya, msg)
+    {
+        let persona = this.get(contrasenya);
+        if(persona)
+        {
+            this.xat.unshift({
+                nom: persona.nom,
+                msg: msg
+            })
+
+            return true;
+        }
+
+        return false;
     }
 
     agafarXat()

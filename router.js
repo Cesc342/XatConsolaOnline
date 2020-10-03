@@ -1,6 +1,5 @@
 const Express = require("express");
 const router = Express.Router();
-const fs = require("fs");
 
 const path = require("path");
 
@@ -18,8 +17,19 @@ router.use((req, res, next) => {
 })
 
 router.get("/", (req, res) => {
-    let txt = fs.readFilaAsync("./ConnectarServidor.js");
-    res.send();
+    res.sendFile(path.join(__dirname, "ConnectarServidor.js"));
+})
+
+router.post("/comprovarContra", (req, res) => {
+    let body = req.body;
+    console.table(Xat);
+    console.log(body);
+
+    if(Xat.get(body.contra)){
+        res.sendStatus(200);
+    }else{
+        res.sendStatus(401);
+    }
 })
 
 router.get("/agafarTot", (req, res) => {
@@ -35,8 +45,12 @@ router.post("/agafarNous", (req, res) => {
 router.post("/enviar", (req, res) => {
     const body = req.body;
     console.log(`${body.nom}: ${body.msg}`)
-    Xat.enviar(body.nom, body.msg);
-    res.sendStatus(200);
+    let enviat = Xat.enviar(body.nom, body.msg);
+    if(enviat){
+        res.sendStatus(200);
+    }else{
+        res.sendStatus(403);
+    }
 })
 
 module.exports = router;
