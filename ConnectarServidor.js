@@ -12,7 +12,7 @@ class Xat{
         .then(res => {
             if(res){
                 this.contrasenya = contrasenya;
-                this.i = setInterval(() => this.comprovarNouMissatge(), 1500);
+                this.i = setInterval(() => this.comprovarNouMissatge(), 500);
                 this.reiniciar();
             }
         })
@@ -66,12 +66,17 @@ class Xat{
 
     async comprovarNouMissatge()
     {
-        let ultimPass = this.ultim;
+        let ultimPassat = this.ultim.nom + this.ultim.msg;
         let res = await fetch(this.link + "/agafarNous", this.crearDataPost(this.ultim));
         let nouMissatges = await res.json();
-        if(nouMissatges && this.ultim == ultimPass)
+        if(nouMissatges)
         {
-            this.imprimir(nouMissatges);
+            if(ultimPassat == this.ultim.nom + this.ultim.msg)
+            {
+                this.imprimir(nouMissatges);
+            }else{
+                this.comprovarNouMissatge();
+            }
         }
     }
 
